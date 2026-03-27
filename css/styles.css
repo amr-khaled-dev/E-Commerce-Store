@@ -1,0 +1,125 @@
+/* Start Variables */
+:root {
+    --main-color: #4D1FAB;
+    --Secondary-color: #350c81;
+    --error-color: #E74C3C;
+    --success-color: #30BA67;
+    --active-sun-color: #f39c12;
+    --background-color: #f8f8f8;
+    --default-background-color: #fff;
+    --default-text-color: #000;
+    --checked-color: #e5e5e5;
+    --border-radius: 10px;
+}
+
+/* End Variables */
+
+/* Start Global Rules  */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+body.dark {
+    --default-background-color: #1e2939;
+    --checked-color: #374151;
+    --background-color: #101828;
+    --default-text-color: #e5e7eb;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--Secondary-color);
+}
+
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* End Global Rules */
+
+/* Start Header */
+
+
+/* End Header */
+
+/* Start Main */
+main {
+    padding: 20px 0;
+}
+
+main .products-grid,
+main .cart-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.checkout-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* End Main */
+
+/* Start Footer */
+
+
+/* End Footer */

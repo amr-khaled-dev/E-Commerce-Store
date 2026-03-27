@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Commerce Store Application">
+    <meta name="author" content="Amr Khaled">
+    <title>Checkout</title>
+    <meta property="og:title" content="E-Commerce Store Application">
+    <meta property="og:description" content="Browse and shop products in our E-Commerce Store.">
+    <meta property="og:type" content="website">
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- Render All Elements Normally -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h2>Customer Information</h2>
+                    <form action="#" method="post" class="checkout-form" id="checkoutForm">
+                        <div class="input-field">
+                            <label>Full Name
+                                <input type="text" name="name" placeholder="John Doe" autocomplete="name"
+                                    required></label>
+                        </div>
+                        <div class="input-field">
+                            <label>Phone Number
+                                <input type="tel" name="phone" placeholder="++201234567890" autocomplete="mobile"
+                                    required></label>
+                        </div>
+                        <div class="input-field">
+                            <label>Email Address
+                                <input type="email" name="email" placeholder="8oTb9@example.com" autocomplete="off"
+                                    required></label>
+                        </div>
+                        <div class="input-field">
+                            <label>Shipping Address
+                                <input type="text" name="address" placeholder="123 Main St Apt 1"
+                                    autocomplete="address-line1" required></label>
+                        </div>
+                        <div class="input-field">
+                            <label>City
+                                <input type="text" name="city" placeholder="New Cairo" autocomplete="off" required>
+                            </label>
+                        </div>
+                        <div class="shipping-radio" role="radiogroup" aria-label="Order Shipping Options">
+                            <span>Shipping Options</span>
+                            <div class="radio">
+                                <input type="radio" id="standardShipping" name="shipping" value="standard" checked>
+                                <label for="standardShipping">Standard Shipping 10$</label>
+                                <input type="radio" id="expressShipping" name="shipping" value="express">
+                                <label for="expressShipping">Express Shipping 15$</label>
+                            </div>
+                        </div>
+                        <button type="submit">Place Order</button>
+                    </form>
+                </div>
+                <div class="summary">
+                    <h2>Order Summary</h2>
+                    <div class="checkout-items" id="checkoutItems">
+                        <!-- Products will be added here dynamically -->
+                    </div>
+                    <hr>
+                    <div class="order-summary" id="orderSummary">
+                        <!-- Summary will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="status" id="status">
+                <!-- Status will be added here dynamically -->
+            </div>
+        </div>
+    </main>
+    <script type="module" src="src/pages/checkout.js"></script>
+</body>
+
+</html>
