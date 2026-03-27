@@ -1,5 +1,5 @@
 import { getProductById } from "../services/api.js";
-import { getCartItems, clearCartItems, removeFromCart } from "../services/cartServices.js";
+import { getCartItems, clearCartItems, removeFromCart } from "../services/cartService.js";
 import { saveOrder } from "../services/orderService.js";
 import { checkoutItem } from "../components/checkoutItem.js";
 import { checkoutSummary } from "../components/checkoutSummary.js";
