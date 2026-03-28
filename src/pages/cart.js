@@ -8,8 +8,6 @@ let cartItems = document.getElementById("cartItems");
 let summaryBox = document.getElementById("summaryBox");
 let status = document.getElementById("status");
 
-console.log("Cart page loaded");
-
 async function renderCartItems() {
     try {
         if (!cartItems || !summaryBox || !status) return;

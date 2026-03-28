@@ -7,8 +7,6 @@ let productsGrid = document.getElementById("productsGrid");
 let status = document.getElementById("status");
 let showCartBtn = document.getElementById("showCartBtn");
 
-console.log("home loaded");
-
 async function initHome() {
     try {
         if (!productsGrid || !status) return;
@@ -16,7 +14,6 @@ async function initHome() {
         setStatus.showLoading(status, productsGrid, "Loading products...");
         const { products } = await getProducts(15, 0);
         if (products.length === 0) return setStatus.showError(status, productsGrid, "No products found.");
-        console.log("Products fetched:", products);
         products.forEach(product => {
             const card = productCard(product);
             productsGrid.append(card);

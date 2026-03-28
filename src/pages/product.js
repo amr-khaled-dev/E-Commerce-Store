@@ -7,8 +7,6 @@ let productDetails = document.getElementById("productDetails");
 let status = document.getElementById("status");
 const id = new URLSearchParams(window.location.search).get("id");
 
-console.log("Product page loaded with ID:", id);
-
 async function renderProductDetails() {
     try {
         if (!productDetails || !status) return;
@@ -17,7 +15,6 @@ async function renderProductDetails() {
         if (!id) return setStatus.showError(status, productDetails, "Product ID is missing.");
         const product = await getProductById(id);
         if (product === null) return setStatus.showError(status, productDetails, "Failed to load product details.");
-        console.log("Fetched Product:", product);
         const card = productCardDetails(product);
         productDetails.append(card);
         setStatus.hideStatus(status);
