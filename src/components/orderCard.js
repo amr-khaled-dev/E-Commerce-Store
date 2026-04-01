@@ -1,4 +1,4 @@
-export function renderOrderCard(order) {
+export function renderOrdersCard(order) {
     const card = document.createElement("div");
     card.classList.add("order-card");
     card.dataset.id = order.id;
@@ -57,4 +57,82 @@ export function renderOrderCard(order) {
 
     card.append(orderHeader, itemsContainer, orderSummary, viewDetailsBtn);
     return card;
+}
+
+export function renderOrderInfo(order) {
+    const { id, date, customerData } = order;
+
+    const infoContainer = document.createElement("div");
+    infoContainer.classList.add("customer-info");
+    infoContainer.dataset.id = id;
+
+    const orderId = document.createElement("p");
+    orderId.classList.add("order-id");
+    orderId.textContent = `Order ID: ${id}`;
+
+    const orderDate = document.createElement("p");
+    orderDate.classList.add("order-date");
+    const dateObj = new Date(date);
+    orderDate.textContent = `Date: ${dateObj.toLocaleDateString("en-US")}`;
+
+    const customerName = document.createElement("p");
+    customerName.classList.add("customer-name");
+    customerName.textContent = `Customer: ${customerData.name}`;
+
+    const customerEmail = document.createElement("p");
+    customerEmail.classList.add("customer-email");
+    customerEmail.textContent = `Email: ${customerData.email}`;
+
+    infoContainer.append(orderId, orderDate, customerName, customerEmail);
+    return infoContainer;
+}
+
+export function renderOrderItems(product, qty) {
+    const { id, thumbnail, title, price } = product;
+
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.dataset.id = id;
+
+    const productImg = document.createElement("img");
+    productImg.src = thumbnail;
+    productImg.alt = title;
+    productImg.classList.add("product-img");
+
+    const productTitle = document.createElement("p");
+    productTitle.textContent = title;
+    productTitle.classList.add("product-title");
+
+    const productPrice = document.createElement("span");
+    productPrice.textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(price);
+    productPrice.classList.add("product-price");
+
+    const productQty = document.createElement("p");
+    productQty.textContent = `Quantity: ${qty}`;
+    productQty.classList.add("product-qty");
+
+    card.append(productImg, productTitle, productPrice, productQty);
+    return card;
+}
+
+export function renderOrderSummary(order) {
+    const { shipping, totals } = order;
+
+    const summaryContainer = document.createElement("div");
+    summaryContainer.classList.add("order-summary");
+
+    const shippingCost = document.createElement("p");
+    shippingCost.classList.add("shipping-cost");
+    shippingCost.textContent = `Shipping: ${shipping.type} x ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(shipping.cost)}`;
+
+    const itemsTotal = document.createElement("p");
+    itemsTotal.classList.add("items-total");
+    itemsTotal.textContent = `Items Total: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totals.itemsTotal)}`;
+
+    const grandTotal = document.createElement("p");
+    grandTotal.classList.add("grand-total");
+    grandTotal.textContent = `Grand Total: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totals.grandTotal)}`;
+
+    summaryContainer.append(shippingCost, itemsTotal, grandTotal);
+    return summaryContainer;
 }

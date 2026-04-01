@@ -27,6 +27,25 @@
     <main>
         <div class="container">
             <h2>My Orders</h2>
+            <dialog class="details-dialog" id="detailsDialog">
+                <div class="dialog-header">
+                    <h3>Order Details</h3>
+                    <button id="closeDialogBtn" class="dialog-close" type="button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="dialog-content" id="dialogContent">
+                    <div class="customer-info" id="customerInfo">
+                        <!-- Customer info will be added here dynamically -->
+                    </div>
+                    <div class="items-details" id="itemsDetails">
+                        <!-- Order details will be added here dynamically -->
+                    </div>
+                    <div class="order-summary" id="orderSummary">
+                        <!-- Order summary will be added here dynamically -->
+                    </div>
+                </div>
+            </dialog>
             <div class="orders-container" id="ordersContainer">
                 <!-- Orders will be added here dynamically -->
             </div>
