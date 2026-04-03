@@ -10,14 +10,15 @@ let detailsDialog = document.getElementById("detailsDialog");
 let closeDialogBtn = document.getElementById("closeDialogBtn");
 let customerInfo = document.getElementById("customerInfo");
 let itemsDetails = document.getElementById("itemsDetails");
-let orderSummary = document.getElementById("orderSummary");
+let orderSummaryContainer = document.getElementById("orderSummary");
 let orderId = null;
+let orders = [];
 
 function loadOrders() {
     try {
         ordersContainer.innerHTML = "";
         setStatus.showLoading(status, ordersContainer, "Loading your orders...");
-        const orders = getAllOrders();
+        orders = getAllOrders();
         if (orders.length === 0) return setStatus.showError(status, ordersContainer, "You have no orders yet.");
         orders.forEach(order => {
             const orderCard = renderOrdersCard(order);
@@ -33,8 +34,11 @@ function loadOrders() {
 
 async function loadOrderDetails(orderId) {
     try {
-        const order = getAllOrders().find(o => o.id === orderId);
-        if (order.length === 0) return setStatus.showError(status, detailsDialog, "Order not found.");
+        customerInfo.innerHTML = "";
+        itemsDetails.innerHTML = "";
+        orderSummary.innerHTML = "";
+        const order = orders.find(o => o.id === orderId);
+        if (!order) return setStatus.showError(status, detailsDialog, "Order not found.");
         const customerInfoContent = renderOrderInfo(order);
         customerInfo.append(customerInfoContent);
         const orderItemsPromises = order.items.map(item => getProductById(item.id));
@@ -44,7 +48,7 @@ async function loadOrderDetails(orderId) {
             itemsDetails.append(itemElement);
         }
         const orderSummaryContent = renderOrderSummary(order);
-        orderSummary.append(orderSummaryContent);
+        orderSummaryContainer.append(orderSummaryContent);
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error loading order details:", error);
@@ -59,9 +63,6 @@ homeBtn.addEventListener("click", () => {
 ordersContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("view-details-btn")) {
         detailsDialog.showModal();
-        customerInfo.innerHTML = "";
-        itemsDetails.innerHTML = "";
-        orderSummary.innerHTML = "";
         orderId = e.target.dataset.id;
         loadOrderDetails(orderId);
     }
