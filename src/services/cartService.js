@@ -4,6 +4,11 @@ export function getCartItems() {
     return getCart();
 }
 
+export function getCartCount() {
+    const cart = getCart();
+    return cart.length;
+}
+
 export function addToCart(productId, qty = 1) {
     productId = Number(productId);
     qty = Math.max(1, qty);
@@ -15,6 +20,7 @@ export function addToCart(productId, qty = 1) {
         cart.push({ id: productId, qty });
     }
     setCart(cart);
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function removeFromCart(productId) {
@@ -22,6 +28,7 @@ export function removeFromCart(productId) {
     const cart = getCartItems();
     const filteredCart = cart.filter(item => item.id !== productId);
     setCart(filteredCart);
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function itemIncrement(productId) {
@@ -32,6 +39,7 @@ export function itemIncrement(productId) {
         existingItem.qty += 1;
         setCart(cart);
     }
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function itemDecrement(productId) {
@@ -42,8 +50,10 @@ export function itemDecrement(productId) {
         existingItem.qty = Math.max(1, existingItem.qty - 1);
         setCart(cart);
     }
+    document.dispatchEvent(new Event("cartUpdated"));
 }
 
 export function clearCartItems() {
     clearCart();
+    document.dispatchEvent(new Event("cartUpdated"));
 }

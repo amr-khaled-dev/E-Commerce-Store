@@ -1,3 +1,4 @@
+import { renderHeader } from "../components/header.js";
 import { getProductById } from "../services/api.js";
 import { getCartItems, clearCartItems, removeFromCart } from "../services/cartService.js";
 import { saveOrder } from "../services/orderService.js";
@@ -17,6 +18,8 @@ const state = {
         cost: 10
     }
 };
+
+document.body.prepend(renderHeader());
 
 function renderCheckoutItems() {
     try {

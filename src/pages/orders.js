@@ -1,3 +1,4 @@
+import { renderHeader } from "../components/header.js";
 import { getProductById } from "../services/api.js";
 import { getAllOrders, clearAllOrders } from "../services/orderService.js";
 import { renderOrdersCard, renderOrderInfo, renderOrderItems, renderOrderSummary } from "../components/orderCard.js";
@@ -13,6 +14,8 @@ let itemsDetails = document.getElementById("itemsDetails");
 let orderSummaryContainer = document.getElementById("orderSummary");
 let orderId = null;
 let orders = [];
+
+document.body.prepend(renderHeader());
 
 function loadOrders() {
     try {

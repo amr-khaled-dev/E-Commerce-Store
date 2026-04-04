@@ -1,3 +1,4 @@
+import { renderHeader } from "../components/header.js";
 import { getProductById } from "../services/api.js";
 import { productCardDetails } from "../components/productCard.js";
 import { addToCart } from "../services/cartService.js";
@@ -6,6 +7,8 @@ import * as setStatus from "../utils/status.js";
 let productDetails = document.getElementById("productDetails");
 let status = document.getElementById("status");
 const id = new URLSearchParams(window.location.search).get("id");
+
+document.body.prepend(renderHeader());
 
 async function renderProductDetails() {
     try {

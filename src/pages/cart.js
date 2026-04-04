@@ -1,3 +1,4 @@
+import { renderHeader } from "../components/header.js";
 import { getProductById } from "../services/api.js";
 import { getCartItems, itemIncrement, itemDecrement, removeFromCart, clearCartItems } from "../services/cartService.js";
 import { cartItem } from "../components/cartItem.js";
@@ -7,6 +8,8 @@ import * as setStatus from "../utils/status.js";
 let cartItems = document.getElementById("cartItems");
 let summaryBox = document.getElementById("summaryBox");
 let status = document.getElementById("status");
+
+document.body.prepend(renderHeader());
 
 async function renderCartItems() {
     try {

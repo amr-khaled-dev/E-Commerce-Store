@@ -47,6 +47,11 @@ ul {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: var(--default-text-color);
+}
+
 .container {
     padding-left: 10px;
     padding-right: 10px;
@@ -94,7 +99,22 @@ ul {
 /* End Global Rules */
 
 /* Start Header */
+header {
+    background-color: var(--default-background-color);
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+header .container.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .nav {
+    display: flex;
+    gap: 20px;
+}
 
 /* End Header */
 

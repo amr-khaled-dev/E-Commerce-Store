@@ -1,3 +1,4 @@
+import { renderHeader } from "../components/header.js";
 import { getProducts } from "../services/api.js";
 import { productCard } from "../components/productCard.js";
 import { addToCart } from "../services/cartService.js";
@@ -6,6 +7,9 @@ import * as setStatus from "../utils/status.js";
 let productsGrid = document.getElementById("productsGrid");
 let status = document.getElementById("status");
 let showCartBtn = document.getElementById("showCartBtn");
+
+// document.body.insertAdjacentHTML("afterbegin", renderHeader());
+document.body.prepend(renderHeader());
 
 async function initHome() {
     try {
