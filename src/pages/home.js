@@ -6,7 +6,6 @@ import * as setStatus from "../utils/status.js";
 
 let productsGrid = document.getElementById("productsGrid");
 let status = document.getElementById("status");
-let showCartBtn = document.getElementById("showCartBtn");
 
 // document.body.insertAdjacentHTML("afterbegin", renderHeader());
 document.body.prepend(renderHeader());
@@ -30,19 +29,11 @@ async function initHome() {
 }
 
 productsGrid.addEventListener("click", (e) => {
-    if (e.target.classList.contains("view-btn")) {
-        const productId = e.target.getAttribute("href").split("id=")[1];
-        window.location.href = `product.html?id=${productId}`;
-    }
     if (e.target.classList.contains("cart-btn")) {
         const productId = e.target.dataset.id;
         addToCart(productId, 1);
         console.log("Product added to cart!");
     }
-});
-
-showCartBtn.addEventListener("click", () => {
-    window.location.href = "cart.html";
 });
 
 

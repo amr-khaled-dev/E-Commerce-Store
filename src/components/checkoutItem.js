@@ -2,7 +2,7 @@ export function checkoutItem(product, qty) {
     const { id, thumbnail, title, price } = product;
 
     const card = document.createElement("div");
-    card.classList.add("product-card");
+    card.classList.add("card", "checkout-product");
     card.dataset.id = id;
 
     const productImg = document.createElement("img");

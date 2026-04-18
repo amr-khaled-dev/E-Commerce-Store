@@ -1,6 +1,6 @@
 export function renderOrdersCard(order) {
     const card = document.createElement("div");
-    card.classList.add("order-card");
+    card.classList.add("card", "order-card");
     card.dataset.id = order.id;
 
     // Order Header
@@ -91,7 +91,7 @@ export function renderOrderItems(product, qty) {
     const { id, thumbnail, title, price } = product;
 
     const card = document.createElement("div");
-    card.classList.add("product-card");
+    card.classList.add("card", "order-product");
     card.dataset.id = id;
 
     const productImg = document.createElement("img");

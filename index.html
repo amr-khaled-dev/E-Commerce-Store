@@ -24,12 +24,47 @@
 </head>
 
 <body>
+    <div class="hero-section" role="region" aria-label="Hero Section">
+        <div class="container hero-content">
+            <p class="announce">New Fall Collection</p>
+            <h1>Essentials built for <span>everyday life.</span></h1>
+            <p class="description">We curate beautiful, highly functional products that bring joy to the mundane.
+                Discover the new collection.</p>
+            <button id="showProducts"><a href="#productsSection">Shop Now
+                    <i class="fa-solid fa-arrow-right"></i></a></button>
+        </div>
+    </div>
+    <div class="facts">
+        <div class="item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div class="info">
+                <h3>Free Shipping</h3>
+                <p>On orders over 150</p>
+            </div>
+        </div>
+        <div class="item">
+            <i class="fa-solid fa-rotate"></i>
+            <div class="info">
+                <h3>Easy Returns</h3>
+                <p>30-day policy</p>
+            </div>
+        </div>
+        <div class="item">
+            <i class="fa-solid fa-lock"></i>
+            <div class="info">
+                <h3>Secure Checkout</h3>
+                <p>256-bit encryption</p>
+            </div>
+        </div>
+    </div>
     <main>
         <div class="container">
-            <h2>Welcome to our Store</h2>
-            <button id="showCartBtn">Show Cart</button>
-            <div class="products-grid" id="productsGrid">
-                <!-- Products will be added here dynamically -->
+            <div class="products-section" id="productsSection">
+                <h2>Featured Products</h2>
+                <h4>Our most popular items this week.</h4>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be added here dynamically -->
+                </div>
             </div>
             <div class="status" id="status">
                 <!-- Status will be added here dynamically -->

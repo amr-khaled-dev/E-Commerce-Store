@@ -1,0 +1,25 @@
+/* Start Variables */
+:root {
+    --main-color: #10b981;
+    --secondary-color: #059669;
+    --error-color: #ef4444;
+    --success-color: #04865d;
+    --active-sun-color: #fbbf24;
+    --background-color: #f8fafc;
+    --default-background-color: #fff;
+    --default-text-color: #0f172a;
+    --secondary-text-color: #64748b;
+    --checked-color: #e5e5e5;
+    --border-color: #e2e8f0;
+    --border-radius: 10px;
+}
+
+body.dark {
+    --secondary-color: #34d399;
+    --default-background-color: #1e2939;
+    --checked-color: #374151;
+    --background-color: #101828;
+    --default-text-color: #e5e7eb;
+}
+
+/* End Variables */

@@ -1,0 +1,21 @@
+/* Start Main */
+main {
+    padding: 20px 0;
+    /* background-color: var(--background-color); */
+}
+
+.products-grid,
+.cart-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.checkout-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* End Main */
