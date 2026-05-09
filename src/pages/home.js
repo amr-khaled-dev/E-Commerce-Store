@@ -15,7 +15,7 @@ async function initHome() {
         if (!productsGrid || !status) return;
         productsGrid.innerHTML = "";
         setStatus.showLoading(status, productsGrid, "Loading products...");
-        const { products } = await getProducts(15, 0);
+        const { products } = await getProducts(24, 0);
         if (products.length === 0) return setStatus.showError(status, productsGrid, "No products found.");
         products.forEach(product => {
             const card = productCard(product);

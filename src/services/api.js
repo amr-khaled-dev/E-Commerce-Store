@@ -1,12 +1,13 @@
 const BASE_URL = "https://dummyjson.com"
 
-export async function getProducts(limit = 12, skip = 0) {
+export async function getProducts(limit = 15, skip = 0) {
     try {
         const res = await fetch(`${BASE_URL}/products?skip=${skip}&limit=${limit}`);
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
         const data = await res.json();
+        console.log("Fetched products:", data);
         return data;
     } catch (error) {
         console.error("Error fetching products:", error);

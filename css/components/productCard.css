@@ -52,16 +52,18 @@
     padding: 0 20px;
     width: 100%;
     position: absolute;
-    top: 195px;
+    top: 260px;
     display: flex;
     justify-content: center;
 }
 
 .card .cart-btn {
     width: 100%;
-    padding: 2px 20px;
+    padding: 8px 20px;
     background-color: var(--main-color);
     color: #fff;
+    font-size: 17px;
+    font-weight: bold;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;

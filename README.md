@@ -11,14 +11,37 @@ A professional e-commerce web application with modern design and functionality.
 ├── checkout.html             # Checkout page
 ├── orders.html               # Orders history page
 │
+├── assets/
+│   └── images/               # Image assets
+│
 ├── css/
-│   ├── styles.css           # Main stylesheet
+│   ├── all.min.css          # Font Awesome icons
 │   ├── normalize.css        # CSS reset
-│   └── all.min.css          # Font Awesome icons
-│
-├── images/                   # Image assets
-│
-├── webfonts/                 # Font files
+│   ├── styles.css           # Main stylesheet
+│   │
+│   ├── base/
+│   │   ├── global.css       # Global styles
+│   │   ├── reset.css        # Additional reset styles
+│   │   └── variables.css    # CSS custom properties
+│   │
+│   ├── components/
+│   │   └── productCard.css  # Product card component styles
+│   │
+│   ├── layout/
+│   │   ├── footer.css       # Footer layout styles
+│   │   ├── grid.css         # Grid system styles
+│   │   ├── header.css       # Header layout styles
+│   │   └── main.css         # Main content layout styles
+│   │
+│   ├── pages/
+│   │   ├── cart.css         # Cart page styles
+│   │   ├── checkout.css     # Checkout page styles
+│   │   ├── home.css         # Home page styles
+│   │   ├── orders.css       # Orders page styles
+│   │   └── product.css      # Product page styles
+│   │
+│   └── utils/
+│       └── scrollbar.css    # Custom scrollbar styles
 │
 ├── data/
 │   └── mock-products.json   # Sample product data
@@ -30,6 +53,7 @@ A professional e-commerce web application with modern design and functionality.
 │   │   ├── checkoutItem.js
 │   │   ├── checkoutSummary.js
 │   │   ├── header.js
+│   │   ├── orderCard.js
 │   │   └── productCard.js
 │   │
 │   ├── pages/                # Page-specific logic
@@ -41,7 +65,7 @@ A professional e-commerce web application with modern design and functionality.
 │   │
 │   ├── services/             # Business logic & API services
 │   │   ├── api.js
-│   │   ├── cartServices.js
+│   │   ├── cartService.js
 │   │   ├── orderService.js
 │   │   └── storage.js
 │   │
@@ -50,6 +74,8 @@ A professional e-commerce web application with modern design and functionality.
 │       ├── format.js
 │       ├── status.js
 │       └── validators.js
+│
+├── webfonts/                 # Font files
 │
 └── README.md                 # This file
 ```
