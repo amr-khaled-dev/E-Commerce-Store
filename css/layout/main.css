@@ -4,8 +4,7 @@ main {
     /* background-color: var(--background-color); */
 }
 
-.products-grid,
-.cart-items {
+.products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;

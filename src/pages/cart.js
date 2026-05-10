@@ -18,7 +18,15 @@ async function renderCartItems() {
         summaryBox.innerHTML = "";
         setStatus.showLoading(status, cartItems, "Loading cart items...");
         const cart = getCartItems();
-        if (cart.length === 0) return setStatus.showError(status, cartItems, "Your cart is empty.");
+        if (cart.length === 0) return setStatus.showEmptyState(status, {
+            title: "Your cart is empty",
+            description: `
+        Looks like you haven't added anything yet.
+        Browse our products to find something you love.
+        `,
+            buttonText: "Start Shopping",
+            buttonLink: "index.html"
+        });
         const productsPromises = cart.map(item => getProductById(item.id));
         const products = await Promise.all(productsPromises);
         for (let i = 0; i < products.length; i++) {
@@ -42,19 +50,21 @@ cartItems.addEventListener("click", (e) => {
     if (e.target.classList.contains("inc-qty")) {
         const productId = e.target.dataset.id;
         itemIncrement(productId);
-        console.log("Product quantity increased!");
         changed = true;
     }
     if (e.target.classList.contains("dec-qty")) {
         const productId = e.target.dataset.id;
         itemDecrement(productId);
-        console.log("Product quantity decreased!");
         changed = true;
     }
     if (e.target.classList.contains("remove-btn")) {
         const productId = e.target.dataset.id;
         removeFromCart(productId);
-        console.log("Product removed from cart!");
+        changed = true;
+    }
+    if (e.target.classList.contains("fa-trash-alt")) {
+        const productId = e.target.parentElement.dataset.id;
+        removeFromCart(productId);
         changed = true;
     }
     if (changed) renderCartItems();

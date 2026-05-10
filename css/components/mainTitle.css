@@ -1,0 +1,20 @@
+.main-title {
+    position: relative;
+    margin: 20px 20px 40px;
+    font-size: 35px;
+    font-weight: bolder;
+    color: var(--default-text-color);
+}
+
+.main-title::before {
+    content: "";
+    display: inline-block;
+    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 5px;
+    height: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--main-color);
+}
