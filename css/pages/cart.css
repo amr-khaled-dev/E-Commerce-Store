@@ -175,7 +175,7 @@
 }
 
 .cart-summary .price-container .price-total .grand-total-text {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bolder;
     align-self: last baseline;
     color: var(--default-text-color);
@@ -189,7 +189,7 @@
 }
 
 .cart-summary .price-container .price-total .grand-total-cost {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bolder;
     color: var(--default-text-color);
 }

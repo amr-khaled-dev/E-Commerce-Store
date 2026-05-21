@@ -26,55 +26,81 @@
 <body>
     <main>
         <div class="container">
+            <h2 class="main-title">Checkout</h2>
             <div class="checkout-container">
-                <div class="checkout-form">
-                    <h2>Customer Information</h2>
+                <div class="checkout-form-container">
                     <form action="#" method="post" class="checkout-form" id="checkoutForm">
-                        <div class="input-field">
-                            <label>Full Name
-                                <input type="text" name="name" placeholder="John Doe" autocomplete="name"
-                                    required></label>
-                        </div>
-                        <div class="input-field">
-                            <label>Phone Number
-                                <input type="tel" name="phone" placeholder="++201234567890" autocomplete="mobile"
-                                    required></label>
-                        </div>
-                        <div class="input-field">
-                            <label>Email Address
-                                <input type="email" name="email" placeholder="8oTb9@example.com" autocomplete="off"
-                                    required></label>
-                        </div>
-                        <div class="input-field">
-                            <label>Shipping Address
-                                <input type="text" name="address" placeholder="123 Main St Apt 1"
-                                    autocomplete="address-line1" required></label>
-                        </div>
-                        <div class="input-field">
-                            <label>City
-                                <input type="text" name="city" placeholder="New Cairo" autocomplete="off" required>
-                            </label>
-                        </div>
-                        <div class="shipping-radio" role="radiogroup" aria-label="Order Shipping Options">
-                            <span>Shipping Options</span>
-                            <div class="radio">
-                                <input type="radio" id="standardShipping" name="shipping" value="standard" checked>
-                                <label for="standardShipping">Standard Shipping 10$</label>
-                                <input type="radio" id="expressShipping" name="shipping" value="express">
-                                <label for="expressShipping">Express Shipping 15$</label>
+                        <div class="input-container">
+                            <h3><span>1</span>Contact Information</h3>
+                            <div class="input-field">
+                                <label>Full Name
+                                    <input type="text" name="name" placeholder="John Doe" autocomplete="name"
+                                        required></label>
+                            </div>
+                            <div class="input-field">
+                                <label>Email Address
+                                    <input type="email" name="email" placeholder="8oTb9@example.com" autocomplete="off"
+                                        required></label>
+                            </div>
+                            <div class="input-field">
+                                <label>Phone Number
+                                    <input type="tel" name="phone" placeholder="++201234567890" autocomplete="mobile"
+                                        required></label>
                             </div>
                         </div>
-                        <button type="submit">Place Order</button>
+                        <div class="input-container">
+                            <h3><span>2</span>Shipping Address</h3>
+                            <div class="input-field">
+                                <label>Shipping Address
+                                    <input type="text" name="address" placeholder="123 Main St Apt 1"
+                                        autocomplete="address-line1" required></label>
+                            </div>
+                            <div class="inner-container">
+                                <div class="input-field">
+                                    <label>City
+                                        <input type="text" name="city" placeholder="New Cairo" autocomplete="off"
+                                            required>
+                                    </label>
+                                </div>
+                                <div class="input-field">
+                                    <label>Postal Code
+                                        <input type="text" name="postalCode" placeholder="11511" autocomplete="off"
+                                            required>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <h3><span>3</span>Shipping Options</h3>
+                            <div class="shipping-radio" role="radiogroup" aria-label="Order Shipping Options">
+                                <span>choose your shipping option</span>
+                                <div class="radio">
+                                    <div class="radio-check">
+                                        <input type="radio" id="standardShipping" name="shipping" value="standard"
+                                            checked>
+                                        <label for="standardShipping">Standard Shipping 10$</label>
+                                    </div>
+                                    <div class="radio-check">
+                                        <input type="radio" id="expressShipping" name="shipping" value="express">
+                                        <label for="expressShipping">Express Shipping 15$</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
-                <div class="summary">
-                    <h2>Order Summary</h2>
-                    <div class="checkout-items" id="checkoutItems">
-                        <!-- Products will be added here dynamically -->
-                    </div>
-                    <hr>
-                    <div class="order-summary" id="orderSummary">
-                        <!-- Summary will be added here dynamically -->
+                <div class="summary-box" id="summaryBox">
+                    <div class="summary">
+                        <div class="checkout-items" id="checkoutItems">
+                            <!-- Products will be added here dynamically -->
+                        </div>
+                        <div class="order-summary" id="orderSummary">
+                            <!-- Summary will be added here dynamically -->
+                            <!-- <button type="submit" form="checkoutForm">Place Order</button>
+                            <p class="secure-checkout-msg">
+                                <i class="fas fa-lock"></i>Secured by 256-bit encryption
+                            </p> -->
+                        </div>
                     </div>
                 </div>
             </div>

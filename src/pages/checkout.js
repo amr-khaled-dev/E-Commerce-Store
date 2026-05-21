@@ -9,6 +9,7 @@ import * as setStatus from "../utils/status.js";
 let checkoutForm = document.getElementById("checkoutForm");
 let checkoutItems = document.getElementById("checkoutItems");
 let orderSummary = document.getElementById("orderSummary");
+let summaryBox = document.getElementById("summaryBox");
 let status = document.getElementById("status");
 const state = {
     cart: [],
@@ -28,7 +29,16 @@ function renderCheckoutItems() {
         setStatus.showLoading(status, checkoutItems, "Loading order summary...");
         if (state.cart.length === 0) {
             checkoutForm.style.display = "none";
-            return setStatus.showError(status, checkoutItems, "Your cart is empty.");
+            summaryBox.style.display = "none";
+            return setStatus.showEmptyState(status, {
+                title: "Your cart is empty",
+                description: `
+                    Looks like you haven't added anything yet.
+                    Browse our products to find something you love.
+                    `,
+                buttonText: "Start Shopping",
+                buttonLink: "index.html"
+            });
         }
         state.products.forEach((product, i) => {
             const cartItemElement = checkoutItem(product, state.cart[i].qty);
@@ -37,7 +47,7 @@ function renderCheckoutItems() {
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error displaying cart items summary:", error);
-        setStatus.showError(status, checkoutItems, "Error loading order items.");
+        setStatus.showError(status, summaryBox, "Error loading order items.");
     }
 }
 
@@ -48,34 +58,31 @@ function renderCheckoutSummary() {
         setStatus.showLoading(status, orderSummary, "Loading order summary...");
         if (state.cart.length === 0) {
             checkoutForm.style.display = "none";
-            return setStatus.showError(status, checkoutItems, "Your cart is empty.");
+            summaryBox.style.display = "none";
+            return setStatus.showEmptyState(status, {
+                title: "Your cart is empty",
+                description: `
+                    Looks like you haven't added anything yet.
+                    Browse our products to find something you love.
+                    `,
+                buttonText: "Start Shopping",
+                buttonLink: "index.html"
+            });
         }
         const products = state.products;
         const totalPrice = products.reduce((total, product, i) =>
             total + product.price * state.cart[i].qty
             , 0);
-        const grandTotal = totalPrice + state.shipping.cost;
-        const summary = checkoutSummary(totalPrice, state.shipping.cost, grandTotal);
+        const tax = totalPrice * 0.14; // Assuming a fixed tax rate of 14%
+        const grandTotal = totalPrice + tax + state.shipping.cost;
+        const summary = checkoutSummary(totalPrice, tax, state.shipping.cost, grandTotal);
         orderSummary.append(summary);
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error displaying cart items summary:", error);
-        setStatus.showError(status, orderSummary, "Error loading order summary.");
+        setStatus.showError(status, summaryBox, "Error loading order summary.");
     }
 }
-
-checkoutItems.addEventListener("click", (e) => {
-    let changed = false;
-    if (e.target.classList.contains("remove-btn")) {
-        const productId = e.target.dataset.id;
-        removeFromCart(productId);
-        console.log("Product removed from cart!");
-        changed = true;
-    }
-    if (changed) {
-        initCheckout();
-    }
-});
 
 checkoutForm.addEventListener("submit", async (e) => {
     e.preventDefault();
