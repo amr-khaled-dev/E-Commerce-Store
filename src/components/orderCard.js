@@ -7,16 +7,24 @@ export function renderOrdersCard(order) {
     const orderHeader = document.createElement("div");
     orderHeader.classList.add("order-header");
 
+    const orderIdText = document.createElement("span");
+    orderIdText.classList.add("order-id-text");
+    orderIdText.textContent = "Order ID";
+
     const orderId = document.createElement("span");
     orderId.classList.add("order-id");
-    orderId.textContent = `Order ID: ${order.id}`;
+    orderId.textContent = order.id;
 
     const orderDate = document.createElement("span");
     orderDate.classList.add("order-date");
     const dateObj = new Date(order.date);
-    orderDate.textContent = `Date: ${dateObj.toLocaleDateString("en-US")}`;
+    orderDate.textContent = `${dateObj.toLocaleDateString("en-US")}`;
 
-    orderHeader.append(orderId, orderDate);
+    const dateIcon = document.createElement("icon");
+    dateIcon.classList.add("far", "fa-clock", "date-icon");
+    orderDate.prepend(dateIcon);
+
+    orderHeader.append(orderIdText, orderId, orderDate);
 
     // Order Items
     const itemsContainer = document.createElement("div");
@@ -26,9 +34,16 @@ export function renderOrdersCard(order) {
     const remainingItems = order.items.length - 2;
 
     itemsToShow.forEach((item) => {
-        const itemElement = document.createElement("p");
+        const itemElement = document.createElement("div");
         itemElement.classList.add("order-item");
-        itemElement.textContent = `${item.title} x ${item.qty}`;
+        if (item.qty > 1) {
+            itemElement.setAttribute("quantity", item.qty);
+        }
+        const itemElementImg = document.createElement("img");
+        itemElementImg.src = item.thumbnail;
+        itemElementImg.alt = item.title;
+        itemElementImg.classList.add("order-item-img");
+        itemElement.append(itemElementImg);
         itemsContainer.append(itemElement);
     });
 
@@ -45,17 +60,16 @@ export function renderOrdersCard(order) {
 
     const totalPrice = document.createElement("span");
     totalPrice.classList.add("order-total");
-    totalPrice.textContent = `Total: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(order.totals.grandTotal)}`;
+    totalPrice.textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(order.totals.grandTotal);
 
-    orderSummary.append(totalPrice);
-
-    // View Details Button
     const viewDetailsBtn = document.createElement("button");
     viewDetailsBtn.textContent = "View Details";
     viewDetailsBtn.classList.add("view-details-btn");
     viewDetailsBtn.dataset.id = order.id;
 
-    card.append(orderHeader, itemsContainer, orderSummary, viewDetailsBtn);
+    orderSummary.append(totalPrice, viewDetailsBtn);
+
+    card.append(orderHeader, itemsContainer, orderSummary);
     return card;
 }
 
@@ -68,20 +82,34 @@ export function renderOrderInfo(order) {
 
     const orderId = document.createElement("p");
     orderId.classList.add("order-id");
-    orderId.textContent = `Order ID: ${id}`;
+    orderId.textContent = `Order ${id}`;
 
     const orderDate = document.createElement("p");
     orderDate.classList.add("order-date");
     const dateObj = new Date(date);
-    orderDate.textContent = `Date: ${dateObj.toLocaleDateString("en-US")}`;
+    orderDate.textContent = dateObj.toLocaleDateString("en-US");
+
+    const orderDateIcon = document.createElement("icon");
+    orderDateIcon.classList.add("far", "fa-clock", "date-icon");
+    orderDate.prepend(orderDateIcon);
 
     const customerName = document.createElement("p");
     customerName.classList.add("customer-name");
-    customerName.textContent = `Customer: ${customerData.name}`;
+    customerName.textContent = "Customer:";
+
+    const customerNameText = document.createElement("span");
+    customerNameText.classList.add("customer-name-text");
+    customerNameText.textContent = customerData.name;
+    customerName.append(customerNameText);
 
     const customerEmail = document.createElement("p");
     customerEmail.classList.add("customer-email");
-    customerEmail.textContent = `Email: ${customerData.email}`;
+    customerEmail.textContent = "Email:";
+
+    const customerEmailText = document.createElement("span");
+    customerEmailText.classList.add("customer-email-text");
+    customerEmailText.textContent = customerData.email;
+    customerEmail.append(customerEmailText);
 
     infoContainer.append(orderId, orderDate, customerName, customerEmail);
     return infoContainer;
@@ -121,18 +149,14 @@ export function renderOrderSummary(order) {
     const summaryContainer = document.createElement("div");
     summaryContainer.classList.add("order-summary");
 
-    const shippingCost = document.createElement("p");
-    shippingCost.classList.add("shipping-cost");
-    shippingCost.textContent = `Shipping: ${shipping.type} x ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(shipping.cost)}`;
-
-    const itemsTotal = document.createElement("p");
-    itemsTotal.classList.add("items-total");
-    itemsTotal.textContent = `Items Total: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totals.itemsTotal)}`;
-
     const grandTotal = document.createElement("p");
     grandTotal.classList.add("grand-total");
-    grandTotal.textContent = `Grand Total: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totals.grandTotal)}`;
+    grandTotal.textContent = "Order Total";
 
-    summaryContainer.append(shippingCost, itemsTotal, grandTotal);
+    const grandTotalCost = document.createElement("p")
+    grandTotalCost.classList.add("grand-total-cost");
+    grandTotalCost.textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totals.grandTotal);
+
+    summaryContainer.append(grandTotal, grandTotalCost);
     return summaryContainer;
 }

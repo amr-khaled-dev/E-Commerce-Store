@@ -22,7 +22,18 @@ function loadOrders() {
         ordersContainer.innerHTML = "";
         setStatus.showLoading(status, ordersContainer, "Loading your orders...");
         orders = getAllOrders();
-        if (orders.length === 0) return setStatus.showError(status, ordersContainer, "You have no orders yet.");
+        if (orders.length === 0) {
+            homeBtn.style.display = "none";
+            return setStatus.showEmptyState(status, {
+                title: "You have no orders yet.",
+                description: `
+                                Looks like you haven't placed any orders yet.
+                                Browse our products and place your first order!
+                                `,
+                buttonText: "Start Shopping",
+                buttonLink: "index.html"
+            });
+        }
         orders.forEach(order => {
             const orderCard = renderOrdersCard(order);
             ordersContainer.append(orderCard);

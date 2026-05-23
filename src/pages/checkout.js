@@ -100,6 +100,7 @@ checkoutForm.addEventListener("submit", async (e) => {
         const qty = state.cart[i].qty;
         return {
             id: product.id,
+            thumbnail: product.thumbnail,
             title: product.title,
             price: product.price,
             qty: qty,
@@ -115,7 +116,7 @@ checkoutForm.addEventListener("submit", async (e) => {
     const grandTotal = itemsTotal + shipping.cost;
 
     const order = {
-        id: `order_${Date.now()}`,
+        id: `ORD_${Date.now()}`,
         date: new Date().toISOString(),
         customerData,
         items,
