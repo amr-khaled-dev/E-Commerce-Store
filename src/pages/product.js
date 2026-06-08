@@ -15,15 +15,31 @@ async function renderProductDetails() {
         if (!productDetails || !status) return;
         productDetails.innerHTML = "";
         setStatus.showLoading(status, productDetails, "Loading product details...");
-        if (!id) return setStatus.showError(status, productDetails, "Product ID is missing.");
+        if (!id) return setStatus.showError(status, {
+            title: "Wrong product id",
+            description: `
+                Looks like something went wrong,
+                please check your internet connection and try again.
+                `,
+            buttonText: "Return Home",
+            buttonLink: "index.html"
+        });
         const product = await getProductById(id);
-        if (product === null) return setStatus.showError(status, productDetails, "Failed to load product details.");
+        if (product === null) return setStatus.showError(status, {
+            title: "Something went wrong",
+            description: `
+                Looks like something went wrong,
+                please check your internet connection and try again.
+                `,
+            buttonText: "Return Home",
+            buttonLink: "index.html"
+        });
         const card = productCardDetails(product);
         productDetails.append(card);
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error getting product details:", error);
-        setStatus.showError(status, productDetails, "Failed to load product details. Please try again.");
+        setStatus.showError(status);
     }
 }
 

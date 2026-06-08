@@ -23,12 +23,25 @@ export function renderHeader() {
     const homeLink = document.createElement('a');
     homeLink.href = 'index.html';
     homeLink.textContent = 'Home';
+    if (window.location.pathname === '/index.html') {
+        homeLink.classList.add('active');
+    }
+
+    const shopLink = document.createElement('a');
+    shopLink.href = 'shop.html';
+    shopLink.textContent = 'Shop';
+    if (window.location.pathname === '/shop.html') {
+        shopLink.classList.add('active');
+    }
 
     const ordersLink = document.createElement('a');
     ordersLink.href = 'orders.html';
     ordersLink.textContent = 'Orders';
+    if (window.location.pathname === '/orders.html') {
+        ordersLink.classList.add('active');
+    }
 
-    nav.append(homeLink, ordersLink);
+    nav.append(homeLink, shopLink, ordersLink);
 
     // Cart icon section
     const cartDiv = document.createElement('div');

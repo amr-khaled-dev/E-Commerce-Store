@@ -42,7 +42,7 @@ function loadOrders() {
     }
     catch (error) {
         console.error("Error loading orders:", error);
-        setStatus.showError(status, ordersContainer, "Error loading orders.");
+        setStatus.showError(status);
     }
 }
 

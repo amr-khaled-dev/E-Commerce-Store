@@ -41,7 +41,7 @@ async function renderCartItems() {
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error getting cart items", error);
-        setStatus.showError(status, cartItems, "Error loading cart items.");
+        setStatus.showError(status);
     }
 }
 

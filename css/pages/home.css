@@ -195,6 +195,10 @@
     .facts .item {
         width: 220px;
     }
+
+    .products-section .card .cart-btn-container {
+        top: 260px;
+    }
 }
 
 /* End Responsive */

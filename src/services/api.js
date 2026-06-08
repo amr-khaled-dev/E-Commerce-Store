@@ -28,3 +28,18 @@ export async function getProductById(id) {
         return null;
     }
 }
+
+export async function getCategories() {
+    try {
+        const res = await fetch(`${BASE_URL}/products/categories`);
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const data = await res.json();
+        console.log("Fetched categories:", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        return { products: [], total: 0, skip, limit };
+    }
+}

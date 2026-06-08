@@ -16,7 +16,17 @@ async function initHome() {
         productsGrid.innerHTML = "";
         setStatus.showLoading(status, productsGrid, "Loading products...");
         const { products } = await getProducts(24, 0);
-        if (products.length === 0) return setStatus.showError(status, productsGrid, "No products found.");
+        if (products.length === 0) {
+            return setStatus.showError(status, {
+                title: "Something went wrong",
+                description: `
+                Looks like something went wrong,
+                please check your internet connection and try again.
+                `,
+                buttonText: "Refresh",
+                buttonLink: "index.html"
+            });
+        }
         products.forEach(product => {
             const card = productCard(product);
             productsGrid.append(card);
@@ -24,7 +34,7 @@ async function initHome() {
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error initializing home page:", error);
-        setStatus.showError(status, productsGrid, "Failed to load products. Please try again.");
+        setStatus.showError(status);
     }
 }
 

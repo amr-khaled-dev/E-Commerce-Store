@@ -47,7 +47,7 @@ function renderCheckoutItems() {
         setStatus.hideStatus(status);
     } catch (error) {
         console.error("Error displaying cart items summary:", error);
-        setStatus.showError(status, summaryBox, "Error loading order items.");
+        setStatus.showError(status);
     }
 }
 

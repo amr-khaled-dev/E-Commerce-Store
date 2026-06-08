@@ -2,7 +2,7 @@
 
 A professional e-commerce web application with modern design and functionality.
 
-**Current Version**: 1.0.0
+**Current Version**: 2.0.0
 
 ## Project Structure
 
@@ -84,7 +84,7 @@ A professional e-commerce web application with modern design and functionality.
 
 ## Version History
 
-### v1.0.0 (Current - Stable Release)
+### v1.0.0 (Previous - Stable Release)
 First stable release of the E-Commerce Store with core functionality completed.
 
 **Completed Features:**
@@ -101,11 +101,34 @@ First stable release of the E-Commerce Store with core functionality completed.
 - ✅ Cart and checkout summary components
 - ✅ Order status tracking
 
-### v2.0.0 (Upcoming)
-Future enhancements planned:
-- Shop page with advanced filtering and sorting
-- Enhanced header navigation
-- Additional product management features
+### v2.0.0 (Current - Stable Release)
+This release stabilizes the shop experience and includes UI, UX and code-structure improvements.
+
+**Completed Features:**
+- ✅ Shop page with product listing and improved layout (`shop.html`, `src/pages/shop.js`, `css/pages/shop.css`)
+- ✅ `shopItem` / `shopItem.js` and updated `productCard` components for consistent item rendering (`src/components/shopItem.js`, `src/components/productCard.js`)
+- ✅ Advanced client-side filtering and sorting controls on the shop page
+- ✅ Improved header/navigation for better discoverability (`src/components/header.js`, css/layout/header.css)
+- ✅ Refined cart and checkout wiring and UI tweaks (`src/components/cartItem.js`, `src/components/cartSummary.js`, `src/components/checkoutSummary.js`)
+- ✅ Additional page-specific styles and responsive fixes across `css/pages/`
+- ✅ Minor performance and accessibility improvements
+- ✅ Updated mock product data and service hooks to support the shop workflow (`data/mock-products.json`, `src/services/api.js`)
+
+**Notes:**
+- The repository layout was kept modular: components, pages, services and utils were refined for readability and reuse.
+
+### v3.0.0 (Planned)
+Planned enhancements for the next major version:
+- Server-side integration and real backend API (replace mock API)
+- User accounts, authentication and order persistence
+- Payment gateway integration (Stripe/PayPal)
+- Server-side search, pagination and improved filtering
+- Wishlist/favorites and product reviews
+- Admin dashboard for product management
+- End-to-end tests, unit tests and CI pipeline
+- Accessibility audit and improvements
+
+More detailed roadmap and milestones will be added to this README as v3 work begins.
 
 ## Key Features
 
