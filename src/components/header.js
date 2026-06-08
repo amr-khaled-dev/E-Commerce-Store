@@ -23,21 +23,24 @@ export function renderHeader() {
     const homeLink = document.createElement('a');
     homeLink.href = 'index.html';
     homeLink.textContent = 'Home';
-    if (window.location.pathname === '/index.html') {
+    const pageHome = window.location.pathname.split('/').pop();
+    if (pageHome === 'index.html' || pageHome === 'index') {
         homeLink.classList.add('active');
     }
 
     const shopLink = document.createElement('a');
     shopLink.href = 'shop.html';
     shopLink.textContent = 'Shop';
-    if (window.location.pathname === '/shop.html') {
+    const pageShop = window.location.pathname.split('/').pop();
+    if (pageShop === 'shop.html' || pageShop === 'shop') {
         shopLink.classList.add('active');
     }
 
     const ordersLink = document.createElement('a');
     ordersLink.href = 'orders.html';
     ordersLink.textContent = 'Orders';
-    if (window.location.pathname === '/orders.html') {
+    const pageOrders = window.location.pathname.split('/').pop();
+    if (pageOrders === 'orders.html' || pageOrders === 'orders') {
         ordersLink.classList.add('active');
     }
 

@@ -118,8 +118,14 @@
         width: 80%;
     }
 
-    .categories-products-container .products-grid .card .cart-btn-container {
-        top: 250px;
+    .pagination-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pagination-container .pagination-numbers {
+        flex-wrap: wrap;
+        gap: 5px;
     }
 }
 
